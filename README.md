@@ -1,5 +1,18 @@
 # ComfyUI-RunwayAPI
 
-This repository provides custom ComfyUI nodes that connect to the [Runway API](https://docs.dev.runwayml.com/api/) for updating videos using reference images. It allows direct integration of TopazAI's AI video generation into ComfyUI workflows with full control over output data, video uploading, previewing, and saving.
+Custom ComfyUI nodes that call the [Runway API](https://docs.dev.runwayml.com/api/) —specifically the Gen-4 Aleph video_to_video endpoint with optional reference image(s). Use these to send a source video + prompt from ComfyUI, track the task, and return the finished output URL.
 
-More to come...
+---
+<p align="center">
+  <img src="workflows/Runway_API_Aleph_Workflow.png" alt="Workflow Diagram" />
+</p>
+
+## Installation
+
+### Installing manually
+
+1. Navigate to the `ComfyUI/custom_nodes` directory.
+
+2. Clone this repository:
+
+To be completed.
