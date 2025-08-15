@@ -1,4 +1,4 @@
-# ComfyUI-Higgsfield-API
+# ComfyUI-Runway-API
 
 This repository provides custom ComfyUI nodes that connect to the [Higgsfield API](https://www.higgsfield.ai/) for generating video from text or image prompts. It allows direct integration of Higgsfield's AI video generation into ComfyUI workflows with full control over prompt construction, image uploading, previewing, and saving.
 
@@ -12,7 +12,7 @@ This repository provides custom ComfyUI nodes that connect to the [Higgsfield AP
 
 2. Clone this repository:
    ```
-   git clone https://github.com/odomanrfx/ComfyUI-Higgsfield-API.git
+   git clone https://github.com/odomanrfx/ComfyUI-RunwayAPI.git
    ```
    The path should be `ComfyUI/custom_nodes/ComfyUI-Higgsfield-API/*`, where `*` represents all the files in this repo.
   
@@ -20,7 +20,7 @@ This repository provides custom ComfyUI nodes that connect to the [Higgsfield AP
    ```
    git clone https://github.com/ThanaritKanjanametawatAU/ComfyUI-MediaUtilities
    ```
-   The path should be `ComfyUI/custom_nodes/ComfyUI-MediaUtilities/*`, where `*` represents all the files in this repo.
+   The path should be `ComfyUI/custom_nodes/ComfyUI-RunwayAPI/*`, where `*` represents all the files in this repo.
 
 4. No further dependencies required to install, all included with the installation of ComfyUI. 
 
