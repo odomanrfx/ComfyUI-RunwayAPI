@@ -15,56 +15,75 @@ This repository provides custom ComfyUI nodes that connect to the [Higgsfield AP
    git clone https://github.com/odomanrfx/ComfyUI-RunwayAPI.git
    ```
    The path should be `ComfyUI/custom_nodes/ComfyUI-Higgsfield-API/*`, where `*` represents all the files in this repo.
-  
-3. Install the Media Utilities by cloning this repository:
+
+ 3. Install the Media Utilities by cloning this repository:
    ```
    git clone https://github.com/ThanaritKanjanametawatAU/ComfyUI-MediaUtilities
    ```
-   The path should be `ComfyUI/custom_nodes/ComfyUI-RunwayAPI/*`, where `*` represents all the files in this repo.
+   The path should be `ComfyUI/custom_nodes/ComfyUI-MediaUtilities/*`, where `*` represents all the files in this repo.
+  
+4. Install the Video Helper Suite by cloning this repository:
+   ```
+   git clone https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite
+   ```
+   The path should be `ComfyUI/custom_nodes/ComfyUI-VideoHelperSuite/*`, where `*` represents all the files in this repo.
 
-4. No further dependencies required to install, all included with the installation of ComfyUI. 
-
-5. Start ComfyUI and enjoy using the Higgsfield API node!
+5. Start ComfyUI and enjoy using the TopazAI API node!
  
 ---
 
-## Features
+## Nodes
 
-- **Text-to-Video Generation**
-  - **Input:** Prompt  
-  - **Output:** Video URL → Downloaded Video  
-  - Adjustable duration, aspect ratio, resolution, and seed
+### Runway API Client  
+**Purpose:** Supply your Runway API key.  
+- **Inputs:** _None_  
+- **Parameters:**  
+  - **API Key** (string) – enter it here or leave blank to load from `config.ini`.  
+- **Outputs:**  
+  - `api key` (RUNWAYCLIENT)
 
-- **Image-to-Video Generation**
-  - **Input:** Prompt + Image (hosted URL)  
-  - **Output:** Video URL → Downloaded Video  
-  - Option to use image as first or last frame
+---
 
-- **Integration with [MediaUtilities](https://github.com/ThanaritKanjanametawatAU/ComfyUI-MediaUtilities)**
-  - Enables loading and saving video URLs as video files
-  - Required for playback and local saving
+### RunwayAPI_Aleph (Video → Video)
+**Purpose:** Calls POST /v1/video_to_video on Runway’s Gen-4 Aleph.
+- **Inputs:**  
+  - `api_key` (RUNWAYCLIENT)
+  - `video` (VIDEO) - source clip
+  - `reference image` (IMAGE)
+  
+- **Parameters (optional):**  
+  - **Prompt**  (string, multi-line)
+  - **Seed**  (int)
+  - **Ratio**  (enum): 1280:720, 720:1280, 1104:832, 960:960, 832:1104, 1584:672, 848:480, 640:480
+  - **publicFigureThreshold** (enum): auto, low
+    
+- **Outputs:**  
+  - `video url` (string) – final output URL
+  
+**How it works:**
+- Small inputs (≤ ~3.2 MB): sent as data URI (data:video/mp4;base64,...) per Runway docs.
+- Larger inputs: uploaded to a free host (e.g., Catbox) and the public URL is passed as videoUri.
+- Polls /v1/tasks/{id} until status is SUCCEEDED and returns the output URL.
 
-- **Flexible Prompting**
-  - Accepts typed prompts or upstream prompt generation nodes
-
-- **ImgBB Support**
-  - Auto-uploads images to ImgBB to obtain publicly accessible URLs for use with the Higgsfield API
+**Common 400s to check:**
+- videoUri invalid/inaccessible (private link, expired URL, or oversized data URI).
+- references image too large (image size > ~3.3 MB before base64).
 
 ---
 
 ## Workflows
 
-Workflows are provided in the `workflows/` directory and include:
+Workflows will be provided in the `workflows/` directory and include:
 
 - `.json` files you can import directly into ComfyUI
 - Reference images showing the structure and flow of the nodes
 
 ---
 
-## Node Locations
+## Notes
 
-- **Higgsfield Nodes:** `api node/video/Higgsfield`
-- **ImgBB Nodes:** `image/upload`
-- **Media Utilities Nodes:** `image/video/MediaUtilities`
+- Data URI limits: Runway accepts base64 data URIs where practical, but base64 inflates size ~33%. Keep raw assets ~≤ 3.2 MB to fit under ~5 MB data-URI guidance.
+- Free hosting: For bigger clips, you need a public, direct-access URL. This repo uses a simple Catbox upload helper (≤ 16 MB). For larger files, switch to your company’s storage or another host with direct GET access.
+
 
 ---
