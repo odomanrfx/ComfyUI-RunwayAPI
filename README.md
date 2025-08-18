@@ -1,6 +1,6 @@
 # ComfyUI-Runway-API
 
-This repository provides custom ComfyUI nodes that connect to the [Higgsfield API](https://www.higgsfield.ai/) for generating video from text or image prompts. It allows direct integration of Higgsfield's AI video generation into ComfyUI workflows with full control over prompt construction, image uploading, previewing, and saving.
+This repository provides custom ComfyUI nodes that connect to the [Runway API](https://docs.dev.runwayml.com/) for generating video from text or image prompts. It allows direct integration of Higgsfield's AI video generation into ComfyUI workflows with full control over prompt construction, image uploading, previewing, and saving.
 
 ---
 
@@ -14,7 +14,7 @@ This repository provides custom ComfyUI nodes that connect to the [Higgsfield AP
    ```
    git clone https://github.com/odomanrfx/ComfyUI-RunwayAPI.git
    ```
-   The path should be `ComfyUI/custom_nodes/ComfyUI-Higgsfield-API/*`, where `*` represents all the files in this repo.
+   The path should be `ComfyUI/custom_nodes/ComfyUI-Runway-API/*`, where `*` represents all the files in this repo.
 
  3. Install the Media Utilities by cloning this repository:
    ```
@@ -28,7 +28,7 @@ This repository provides custom ComfyUI nodes that connect to the [Higgsfield AP
    ```
    The path should be `ComfyUI/custom_nodes/ComfyUI-VideoHelperSuite/*`, where `*` represents all the files in this repo.
 
-5. Start ComfyUI and enjoy using the TopazAI API node!
+5. Start ComfyUI and enjoy using the Runway API node!
  
 ---
 
