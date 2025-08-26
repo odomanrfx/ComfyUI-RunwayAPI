@@ -3,6 +3,10 @@
 This repository provides custom ComfyUI nodes that connect to the [Runway API](https://docs.dev.runwayml.com/) for generating video from text or image prompts. It allows direct integration of Higgsfield's AI video generation into ComfyUI workflows with full control over prompt construction, image uploading, previewing, and saving.
 
 ---
+<p align="center">
+  <img src="workflows/Aleph_Workflow.png" alt="Workflow Diagram" />
+</p>
+
 
 ## Installation
 
